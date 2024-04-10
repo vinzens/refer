@@ -254,6 +254,16 @@ Either way, asterisk does not need to track the state anymore.
 If the aforementioned timer ends, asterisk sends out a SIP Notify containing the SIP-Frag `SIP/2.0 503 Service Unavailable` (maybe 408 request timeout) so the endpoint gets informed about the error.
 An ARI event `ChannelTransfer` containing status `channel_unavailable` must be sent as well.
 
+
+### Side Effects
+
+At the moment, there are Side effects executes by asterisk like CEL or AMI Events. 
+
+In case of a single asterisk instance, these events should not break. CDR / CEL Events should be written as they are now. AMI Events should be emitted as they are now emitted if there is no ARI involved where Dial() handles the refer. However, no Additional side effects should be generated either.
+
+In case of a multi asterisk instance installations these events cannot be thrown as it would be a single asterisk since the Asterisk just know about single Channels but nothing about the setup. CDR Information or similar information must be collected elsewhere. 
+
+
 ### ARI Service
 
 #### Single Asterisk Setup
