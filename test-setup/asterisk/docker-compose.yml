@@ -1,0 +1,10 @@
+services:
+  asterisk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: asterisk
+    volumes:
+      - ./asterisk-config:/etc/asterisk:ro
+    network_mode: "host"
+

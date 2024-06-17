@@ -1,0 +1,3 @@
+[submodule "test-setup/asterisk/asterisk"]
+	path = test-setup/asterisk/asterisk
+	url = git@github.com:asterisk/asterisk.git
